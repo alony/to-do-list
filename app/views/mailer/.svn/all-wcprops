@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/textbuster/!svn/ver/4/trunk/web/app/views/mailer
+END
+registered.text.erb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/textbuster/!svn/ver/4/trunk/web/app/views/mailer/registered.text.erb
+END

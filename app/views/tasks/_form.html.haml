@@ -1,0 +1,25 @@
+= form_for @task||=Task.new(:priority => 1, :status => 'New') do |f|
+  -if @task.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@task.errors.count, "error")} prohibited this task from being saved:"
+      %ul
+        - @task.errors.full_messages.each do |msg|
+          %li= msg
+  %p
+    =f.label :name
+    =f.text_field :name
+  %p
+    =f.label "Description"
+    =f.text_area :desc
+  %p
+    =f.label :priority
+    =f.number_field :priority, :in => (1..5), :default => 1
+  %p
+    =f.label :status
+    =f.enum_select :status
+  %p
+    =f.label :due
+    =f.text_field :due
+    
+  .actions
+    = f.submit 'Save'
