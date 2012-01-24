@@ -7,7 +7,10 @@ class User < ActiveRecord::Base
   has_many :lists
   has_many :tasks
   has_many :collaborations
-  has_many :projects, :through => :collaborations  
+  
+  def projects
+    collaborations.map(&:projects) | Project.where(:author_id => id)
+  end
   
   def username
     name || email
