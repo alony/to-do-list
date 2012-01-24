@@ -9,4 +9,11 @@ class User < ActiveRecord::Base
   has_many :collaborations
   has_many :projects, :through => :collaborations  
   
+  def username
+    name || email
+  end
+  
+  def tasks_to_do
+    Task.where(:assigned_id => id)
+  end
 end

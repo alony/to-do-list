@@ -1,0 +1,15 @@
+%section#secondary_bar
+  .user
+    %p
+      = current_user.username
+      = link_to "(#{current_user.tasks_to_do.count} tasks assigned)", tasks_path
+
+  .breadcrumbs_container
+    %article.breadcrumbs= projects_list
+
+%aside#sidebar.column
+  %h3 Task Lists
+  %ul#tasks.toggle
+    = task_lists(current_user.projects.first)
+
+

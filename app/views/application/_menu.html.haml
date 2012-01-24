@@ -1,7 +1,11 @@
-%ul.menu
-  - if user_signed_in?
-    %li= link_to "Sign Out", destroy_user_session_path, :method => :delete
-  - else
-    %li= link_to "Sign In", new_user_session_path
-    %li= link_to "Sign Up", new_user_registration_path
-  
+%header#header
+  %hgroup
+    %h1.site_title=link_to "ToDo list", root_path
+    %h2.section_title 
+    .btn_view_site
+      - if user_signed_in?
+        = link_to "Sign Out", destroy_user_session_path, :method => :delete
+      - else
+        = link_to "Sign In", new_user_session_path
+= render 'users/sidebar' if user_signed_in?
+

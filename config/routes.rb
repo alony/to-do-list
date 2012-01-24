@@ -5,5 +5,5 @@ ToDoList::Application.routes.draw do
   resources :lists
   resources :tasks
 
-  root :to => "projects#index"
+  root :to => "application#welcome"
 end
