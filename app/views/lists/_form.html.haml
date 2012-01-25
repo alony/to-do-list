@@ -5,13 +5,14 @@
       %ul
         - @list.errors.full_messages.each do |msg|
           %li= msg
-  %p
-    =f.label :name
-    =f.text_field :name
-  %p
-    =f.label "Description"
-    =f.text_area :desc
-    =f.hidden_field :project_id
+  %fieldset
+    %p
+      =f.label :name
+      =f.text_field :name
+    %p
+      =f.label "Description"
+      =f.text_area :desc, :rows => 5
+      =f.hidden_field :project_id
 
   .actions
     = f.submit 'Save'

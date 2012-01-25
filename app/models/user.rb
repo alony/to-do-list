@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   attr_accessible :password, :password_confirmation, *(column_names rescue [])
 
   has_many :lists
-  has_many :tasks
+  has_many :tasks_to_do, :class_name => 'Task', :foreign_key => 'assigned_id'
   has_many :collaborations
   
   def projects
@@ -14,9 +14,5 @@ class User < ActiveRecord::Base
   
   def username
     name || email
-  end
-  
-  def tasks_to_do
-    Task.where(:assigned_id => id)
   end
 end
