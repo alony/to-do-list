@@ -1,13 +1,8 @@
 module ApplicationHelper
   def projects_list
-    return link_to("Add project", new_project_path) unless current_user.projects.any?
-    current_user.projects.map do |project| 
-      link_to project.name, project
-    end.join("<div class='breadcrumb_divider'></div>").html_safe
-  end
-  
-  def task_lists(project)
-    return unless project
-    project.lists.map {|list| "<li class='icn_categories'>" << link_to(list.name, list) << "<\li>"}.join
+    projects = current_user.projects.map do |project| 
+      link_to project.name, project, :class => (current_page?(project_path project) ? "current" : '')
+    end.join("<div class='breadcrumb_divider'></div>")
+    [projects, link_to("Add project", new_project_path)].join("<div class='breadcrumb_divider new'></div>").html_safe
   end
 end

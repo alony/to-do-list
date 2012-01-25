@@ -164,7 +164,7 @@ height: 24px;
 line-height: 23px;
 }
 
-.breadcrumbs a.current, .breadcrumbs a.current:hover {
+.breadcrumbs a.current:link, .breadcrumbs a.current:visited, .breadcrumbs a.current:hover {
 color: #9E9E9E;
 font-weight: bold;
 text-shadow: 0 1px 0 #fff;
@@ -185,11 +185,13 @@ color: #222222;
 display: inline-block;
 width: 12px;
 height: 24px;
-background: url(breadcrumb_divider.png) no-repeat;
+background: url(divider.png) no-repeat;
 float: left;
 margin: 0 5px;
 }
-
+.breadcrumb_divider.new {
+background: url(breadcrumb_divider.png) no-repeat;
+}
 /* Sidebar */
 
 aside#sidebar {

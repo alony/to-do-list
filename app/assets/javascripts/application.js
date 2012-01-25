@@ -9,7 +9,7 @@
 //= require_tree .
 //= require_self
 
-(document).ready(function() { 
+$(document).ready(function() { 
   $(".tablesorter").tablesorter(); 
 
 	//When page loads...

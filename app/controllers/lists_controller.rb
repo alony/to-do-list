@@ -5,12 +5,18 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @tasks = @list.tasks
   end
 
   def edit
     @list = List.find(params[:id])
   end
-
+  
+  def new
+    @list = List.new
+    @list.project_id = params[:project_id]
+  end
+  
   def create
     @list = List.new(params[:list])
     if @list.save
