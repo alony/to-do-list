@@ -34,8 +34,11 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    @list = List.find(params[:id])
-    @list.destroy
+    @list_destroy = List.find(params[:id])
+    @project = @list_destroy.project
+    @list_destroy.destroy
+
+    @list = @project.lists.first || @project.lists.build
   end
 end
 

@@ -5,7 +5,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @task_lists = @project.lists
+    @task_lists = @project.lists.all
+    @list = @task_lists.first
   end
 
   def edit
@@ -37,3 +38,4 @@ class ProjectsController < ApplicationController
     redirect_to projects_path
   end
 end
+

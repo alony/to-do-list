@@ -1,5 +1,5 @@
 -lists.each do |list|
   %li.icn_categories{:id => list.id}
     = link_to list.name, list, :remote => true
-%li.icn_new_article= link_to "Add task list", new_list_path(:project_id => current_project.try(:id)), :remote => true
+%li.icn_new_article= link_to "Add task list", new_list_path(:project_id => @project.try(:id)), :remote => true
 

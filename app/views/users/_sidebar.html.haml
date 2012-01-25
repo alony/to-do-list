@@ -10,7 +10,7 @@
 %aside#sidebar.column
   %h3 Task Lists
   %ul#task_lists.toggle
-    = render partial: 'lists/lists', object: (@task_lists || current_project.try(:lists))
+    = render partial: 'lists/lists', object: @task_lists
 
   %footer
     %hr

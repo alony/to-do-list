@@ -1,4 +1,3 @@
-///// Show proper view
-
-SideList.dropItem('<%= @list.id %>');
+SideList.dropItem('<%= @list_destroy.id %>');
+Page.showContent('<%= escape_javascript(render(@list.new_record? ? 'form' : 'list')) %>');
 
