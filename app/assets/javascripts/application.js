@@ -11,7 +11,7 @@
 
 var Page = {
   init: function() {
-    $(".tablesorter").tablesorter(); 
+    $(".tablesorter").tablesorter();
 
     //When page loads...
     $(".tab_content").hide(); //Hide all content
@@ -36,6 +36,19 @@ var Page = {
   showContent: function(content, node) {
     if (typeof node2 === "undefined") node = "section#main";
     $(node).html(content);
+  }
+}
+
+var SideList = {
+  addItem: function(link, item_id) {
+    $("ul#task_lists li:last").before($('<li></li>')
+        .attr({ id : item_id })
+        .addClass("icn_categories")
+        .html(link));
+  },
+
+  dropItem: function(item_id) {
+    $("ul#task_lists li#"+item_id).remove();
   }
 }
 

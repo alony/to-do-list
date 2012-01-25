@@ -10,20 +10,17 @@ class ListsController < ApplicationController
 
   def edit
     @list = List.find(params[:id])
+    render 'new'
   end
-  
+
   def new
     @list = List.new
     @list.project_id = params[:project_id]
   end
-  
+
   def create
     @list = List.new(params[:list])
-    if @list.save
-      redirect_to @list, notice: 'List was successfully created.'
-    else
-      render action: "new"
-    end
+    render action: "new" unless @list.save
   end
 
   def update
@@ -39,6 +36,6 @@ class ListsController < ApplicationController
   def destroy
     @list = List.find(params[:id])
     @list.destroy
-    redirect_to lists_path
   end
 end
+

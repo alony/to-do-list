@@ -1,4 +1,10 @@
-%h2= @list.name
-=link_to "Edit", edit_list_path(@list)
+%article.module.width_full
+  %header
+    %h3= @list.name
+    .submit_link
+      =link_to "", edit_list_path(@list), class: :edit, title: 'Edit list', remote: true
+      =link_to "", list_path(@list), class: :trash, title: 'Drop list', remote: true, confirm: 'Are u sure?', method: :delete
+  .module_content
+    %p= truncate(@list.desc, :length => 200)
+    = render 'tasks/list', :object => @list.tasks
 
-= render 'tasks/list'
