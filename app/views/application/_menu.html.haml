@@ -7,5 +7,8 @@
         = link_to "Sign Out", destroy_user_session_path, :method => :delete
       - else
         = link_to "Sign In", new_user_session_path
-= render 'users/sidebar' if user_signed_in?
+
+- if user_signed_in?
+  %section#secondary_bar= render 'submenu'
+  %aside#sidebar.column= render 'users/sidebar' 
 

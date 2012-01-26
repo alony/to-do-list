@@ -34,12 +34,12 @@ var Page = {
   },
 
   showContent: function(content, node) {
-    if (typeof node2 === "undefined") node = "section#main";
+    if (typeof node == "undefined") node = "section#main";
     $(node).html(content);
   }
 }
 
-var SideList = {
+var SideList = {         // get rid of the ids
   addItem: function(link, item_id) {
     $("ul#task_lists li:last").before($('<li></li>')
         .attr({ id : item_id })

@@ -303,6 +303,9 @@ background: url(icn_new_article.png) no-repeat center left;
 #sidebar li.icn_edit_article a {
 background: url(icn_edit_article.png) no-repeat center left;
 }
+#sidebar li.icn_drop_article a {
+background: url(icn_trash.png) no-repeat center left;
+}
 #sidebar li.icn_categories a {
 background: url(icn_categories.png) no-repeat center left;
 }

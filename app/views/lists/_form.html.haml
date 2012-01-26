@@ -1,3 +1,5 @@
+%h3 #{action_name.capitalize} task list
+
 = form_for @list ||= @project.lists.build, :remote => true do |f|
   -if @list.errors.any?
     #error_explanation

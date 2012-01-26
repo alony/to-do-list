@@ -11,6 +11,7 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
+    render 'new'
   end
 
   def create
@@ -35,7 +36,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
-    redirect_to projects_path
+    redirect_to current_user.projects.first || new_project_path
   end
 end
 
