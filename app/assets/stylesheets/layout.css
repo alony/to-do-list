@@ -901,3 +901,11 @@ padding: 10px 0;
 text-indent: 40px;
 font-size: 14px;}
 
+.tasks_container {
+width: 100%;
+border: 1px solid #ddd;
+border-top: none;}
+.tasks_container header{
+padding-left: 10px;
+width:auto;}
+

@@ -1,6 +1,6 @@
-%h3 #{action_name.capitalize} task list
-
 = form_for @list ||= @project.lists.build, :remote => true do |f|
+
+  %h3 #{@list.new_record? ? 'New' : 'Edit'} task list
   -if @list.errors.any?
     #error_explanation
       %h2= "#{pluralize(@list.errors.count, "error")} prohibited this list from being saved:"

@@ -1,14 +1,14 @@
-%table
-  %tr
-    %th
-    %th
-    %th
+%article.tasks_container
+  %header
+    %h3.tabs_involved Tasks
+    %ul.tabs
+      %li= link_to "All", '#tab_all'
+      %li= link_to 'To Do', '#tab_to_do'
+      %li= link_to 'Resolved', '#tab_done'
 
-  - @list.tasks.each do |task|
-    %tr
-      %td= link_to 'Show', task
-      %td= link_to 'Edit', edit_task_path(task)
-      %td= link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete
-
-%br
+  .tab_container
+    - {tab_all: list, tab_to_do: list.to_do, tab_done: list.done}.each_pair do |tab, data|
+      .tab_content{:id => tab}
+        %table.tablesorter{:cellspacing => 0}
+          %tbody= render partial: 'tasks/task', collection: data
 

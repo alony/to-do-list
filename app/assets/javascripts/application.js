@@ -12,14 +12,10 @@
 var Page = {
   init: function() {
     $(".tablesorter").tablesorter();
-
-    //When page loads...
-    $(".tab_content").hide(); //Hide all content
-    $("ul.tabs li:first").addClass("active").show(); //Activate first tab
-    $(".tab_content:first").show(); //Show first tab content
+    Page.defaultTab();
 
     //On Click Event
-    $("ul.tabs li").click(function() {
+    $("ul.tabs li").live("click", function() {
 
       $("ul.tabs li").removeClass("active"); //Remove any "active" class
       $(this).addClass("active"); //Add "active" class to selected tab
@@ -33,16 +29,23 @@ var Page = {
     $('.column').equalHeight();
   },
 
+  defaultTab: function(){
+    $(".tab_content").hide(); //Hide all content
+    $("ul.tabs li:first").addClass("active").show(); //Activate first tab
+    $(".tab_content:first").show(); //Show first tab content  
+  },
+
   showContent: function(content, node) {
     if (typeof node == "undefined") node = "section#main";
     $(node).html(content);
+    Page.defaultTab();
   }
 }
 
-var SideList = {         // get rid of the ids
-  addItem: function(link, item_id) {
+var SideList = {
+  addItem: function(link) {
     $("ul#task_lists li:last").before($('<li></li>')
-        .attr({ id : item_id })
+        .attr({ id : link.id })
         .addClass("icn_categories")
         .html(link));
   },

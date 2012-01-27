@@ -6,5 +6,9 @@
       =link_to "", list_path(@list), class: :trash, title: 'Drop list', remote: true, confirm: 'Really?', method: :delete
   .module_content
     %p= truncate(@list.desc, :length => 200)
-    = render 'tasks/list', :object => @list.tasks
+    #tasks
+      - if @list.tasks.any?
+        =render partial: 'tasks/list', object: @list.tasks
+      - else
+        =render 'tasks/form'
 

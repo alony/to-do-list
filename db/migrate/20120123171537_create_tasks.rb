@@ -5,8 +5,6 @@ class CreateTasks < ActiveRecord::Migration
       t.text :desc
       t.enum :status
       t.integer :priority
-      
-      t.datetime :due
 
       t.references :assigned
       t.references :author

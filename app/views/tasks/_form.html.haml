@@ -1,25 +1,26 @@
-= form_for @task||=Task.new(:priority => 1, :status => 'New') do |f|
-  -if @task.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@task.errors.count, "error")} prohibited this task from being saved:"
-      %ul
-        - @task.errors.full_messages.each do |msg|
-          %li= msg
-  %p
-    =f.label :name
-    =f.text_field :name
-  %p
-    =f.label "Description"
-    =f.text_area :desc
-  %p
-    =f.label :priority
-    =f.number_field :priority, :in => (1..5), :default => 1
-  %p
-    =f.label :status
-    =f.enum_select :status
-  %p
-    =f.label :due
-    =f.text_field :due
-    
-  .actions
-    = f.submit 'Save'
+%article.tasks_container
+  %header 
+    %h3 You don't have any tasks. Add one
+  .module_content
+    = form_for @task||=Task.new(:priority => 1, :status => :new) do |f|
+      -if @task.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@task.errors.count, "error")} prohibited this task from being saved:"
+          %ul
+            - @task.errors.full_messages.each do |msg|
+              %li= msg
+      %table
+        %tr
+          %th=f.label :name
+          %td=f.text_field :name
+        %tr
+          %th=f.label "Description"
+          %td=f.text_area :desc, :rows => 5
+        %tr
+          %th=f.label :priority
+          %td=f.number_field :priority, :in => (1..5), :default => 1
+        %tr
+          %th=f.label :status
+          %td=f.enum_select :status
+
+      .actions= f.submit 'Save'

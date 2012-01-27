@@ -1,0 +1,7 @@
+%tr
+  %td= task.name
+  %td= task.status
+  %td= task.priority
+  %td= task.assigned
+  %td= task.cretaed_at.strftime '%x'
+  %td.icn_edit= link_to "", edit_task(task)
