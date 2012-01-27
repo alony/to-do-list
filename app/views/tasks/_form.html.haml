@@ -1,6 +1,6 @@
 %article.tasks_container
   %header 
-    %h3 You don't have any tasks. Add one
+    %h4 You don't have any tasks here. Add one
   .module_content
     = form_for @task||=Task.new(:priority => 1, :status => :new) do |f|
       -if @task.errors.any?
