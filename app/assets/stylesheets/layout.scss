@@ -650,3 +650,34 @@ header .submit_link {
   }
 }
 
+/* Welcome page */
+.welcome {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  h1 {
+    color: #444;
+    font-size: 30px;
+  }
+  div {
+    color: #666;
+    font-size: 16px;
+    &.sec {
+      color: #555;
+      margin: auto auto 30px 50%;
+    }
+  }
+  span.links {
+    color: #666;
+    font-size: 16px;
+    a.signup {
+      display: inline-block;
+      margin-bottom: -12px;
+      height: 35px;
+      width: 88px;
+      background: transparent url(signup.png) center left no-repeat;
+
+    }
+  }
+}
+
