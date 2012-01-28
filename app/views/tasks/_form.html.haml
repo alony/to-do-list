@@ -1,5 +1,5 @@
 %article.tasks_container
-  %header 
+  %header
     %h4 You don't have any tasks here. Add one
   .module_content
     = form_for @task||=Task.new(:priority => 1, :status => :new) do |f|
@@ -17,10 +17,11 @@
           %th=f.label "Description"
           %td=f.text_area :desc, :rows => 5
         %tr
-          %th=f.label :priority
-          %td=f.number_field :priority, :in => (1..5), :default => 1
-        %tr
           %th=f.label :status
           %td=f.enum_select :status
+        %tr
+          %th=f.label :priority
+          %td=f.number_field :priority, :in => (1..5), :default => 1
 
       .actions= f.submit 'Save'
+

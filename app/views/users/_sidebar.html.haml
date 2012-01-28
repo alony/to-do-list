@@ -6,7 +6,7 @@
   %h3 Project #{truncate(@project.name, :length => 20)}
   %ul.toggle
     %li.icn_edit_article= link_to "Edit project", edit_project_path(@project), :remote => true
-    %li.icn_drop_article
+    %li.icn_trash
       = link_to "Drop project", project_path(@project), :remote => true, :method => :delete, :confirm => 'Really?'
 
 %footer

@@ -1,0 +1,42 @@
+@mixin border-radius($color, $radius) {
+  border: 1px solid $color;
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin border-part-radius($part, $radius) {
+  -webkit-border-#{$part}-radius: $radius;
+  -moz-border-radius-#{remove_dashes($part)}: $radius;
+  border-#{$part}-radius: $radius;
+}
+
+@mixin box-shadow($shadow1, $shadow2:0) {
+  -webkit-box-shadow: $shadow1, $shadow2;
+  -moz-box-shadow: $shadow1, $shadow2;
+  box-shadow: $shadow1, $shadow2;
+}
+
+@mixin control() {
+  @include box-shadow(inset 0 2px 2px #ccc, 0 1px 0 #fff);
+  @include border-radius(#bbbbbb, 5px);
+  color: #666666;
+  margin: 0 10px;
+  padding-left: 10px;
+  background-position: 10px 6px;
+  display: block;
+  float: left;
+  width: 96%;
+}
+
+@mixin flash() {
+  display: block;
+  width: 95%;
+  margin: 20px 3% 0 3%;
+  @include border-radius(#fff, 5px);
+  background-position: 10px 10px;
+  padding: 10px 0;
+  text-indent: 40px;
+  font-size: 14px;
+}
+
