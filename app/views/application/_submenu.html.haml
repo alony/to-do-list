@@ -1,7 +1,7 @@
 .user
   %p
     = current_user.username
-    = link_to "(#{current_user.tasks_to_do.count} tasks assigned)", assigned_tasks_path
+    = link_to "(#{current_user.tasks_to_do.count} tasks assigned)", assigned_tasks_path, remote: true
 
 .breadcrumbs_container
   %article.breadcrumbs= projects_list

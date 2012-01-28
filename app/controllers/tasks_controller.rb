@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   end
 
   def assigned
-    @tasks = current_user.tasks_to_do
+    @projects = Project.where(:id => current_user.tasks_to_do.map(&:list).map(&:project_id))
   end
 
   def show

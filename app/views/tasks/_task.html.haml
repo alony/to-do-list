@@ -1,5 +1,5 @@
 %tr
-  %td= task.name
+  %td{:title => task.desc}= task.name
   %td= task.status
   %td= task.priority
   %td= task.assigned.try(:username)

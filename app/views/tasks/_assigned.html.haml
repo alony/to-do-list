@@ -1,0 +1,7 @@
+- @projects.each do |project|
+  %article.module.width_full
+    %header
+      %h3= project.name
+    .module_content
+      #tasks=render partial: 'tasks/list', object: project.tasks.where(:assigned_id => current_user.id)
+
