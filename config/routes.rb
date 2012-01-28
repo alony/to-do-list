@@ -5,5 +5,8 @@ ToDoList::Application.routes.draw do
   resources :lists
   resources :tasks
 
+  get 'my/tasks' => "tasks#assigned", :as => :assigned_tasks
+
   root :to => "application#welcome"
 end
+

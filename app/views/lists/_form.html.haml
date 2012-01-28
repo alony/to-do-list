@@ -2,11 +2,9 @@
 
   %h3 #{@list.new_record? ? 'New' : 'Edit'} task list
   -if @list.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@list.errors.count, "error")} prohibited this list from being saved:"
-      %ul
-        - @list.errors.full_messages.each do |msg|
-          %li= msg
+    %h4.alert_error
+      - @list.errors.full_messages.each do |msg|
+        %li= msg
   %fieldset
     .set
       =f.label :name

@@ -30,6 +30,7 @@ var Page = {
   },
 
   defaultTab: function(){
+    if ($("ul.tabs li.active").length != 0) return;
     $(".tab_content").hide(); //Hide all content
     $("ul.tabs li:first").addClass("active").show(); //Activate first tab
     $(".tab_content:first").show(); //Show first tab content

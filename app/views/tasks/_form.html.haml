@@ -1,27 +1,25 @@
-%article.tasks_container
-  %header
-    %h4 You don't have any tasks here. Add one
-  .module_content
-    = form_for @task||=Task.new(:priority => 1, :status => :new) do |f|
-      -if @task.errors.any?
-        #error_explanation
-          %h2= "#{pluralize(@task.errors.count, "error")} prohibited this task from being saved:"
-          %ul
-            - @task.errors.full_messages.each do |msg|
-              %li= msg
-      %table
-        %tr
-          %th=f.label :name
-          %td=f.text_field :name
-        %tr
-          %th=f.label "Description"
-          %td=f.text_area :desc, :rows => 5
-        %tr
-          %th=f.label :status
-          %td=f.enum_select :status
-        %tr
-          %th=f.label :priority
-          %td=f.number_field :priority, :in => (1..5), :default => 1
+= form_for @task||=Task.new(priority: 1, status: :new, assigned_id: current_user.id, list_id: @list.id), remote: true do |f|
+  =f.hidden_field :list_id
+  -if @task.errors.any?
+    %h4.alert_error
+      - @task.errors.full_messages.each do |msg|
+        %li= msg
+  %table
+    %tr
+      %th=f.label :name
+      %td=f.text_field :name
+    %tr
+      %th=f.label "Description"
+      %td=f.text_area :desc, :rows => 5
+    %tr
+      %th=f.label 'Assigned to'
+      %td=f.select :assigned_id, options_from_collection_for_select((@project||@list.try(:project)||@task.list.try(:project)).collaborators, :id, :username)
+    %tr
+      %th=f.label :status
+      %td=f.enum_select :status
+    %tr
+      %th=f.label :priority
+      %td=f.number_field :priority, :in => (1..5), :default => 1
 
-      .actions= f.submit 'Save'
+  .actions= f.submit 'Save'
 

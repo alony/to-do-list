@@ -2,6 +2,14 @@
   %td= task.name
   %td= task.status
   %td= task.priority
-  %td= task.assigned
-  %td= task.cretaed_at.strftime '%x'
-  %td.icn_edit= link_to "", edit_task(task)
+  %td= task.assigned.try(:username)
+  %td= task.created_at.strftime '%-d %B %Y'
+  %td.actions
+    -unless task.resolved?
+      =link_to "", task_path(task, 'task[status]' => :resolved), method: :put, remote: true, class: 'icn_done', title: 'Mark as Done'
+    -else
+      %span
+
+    = link_to "", edit_task_path(task), remote: true, class: 'icn_edit', title: 'Edit task'
+    = link_to "", task_path(task), method: :delete, confirm: 'Really?', remote: true, class: 'icn_trash', title: 'Drop task'
+

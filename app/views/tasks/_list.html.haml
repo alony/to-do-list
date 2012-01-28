@@ -1,14 +1,28 @@
 %article.tasks_container
-  %header
-    %h3.tabs_involved Tasks
-    %ul.tabs
-      %li= link_to "All", '#tab_all'
-      %li= link_to 'To Do', '#tab_to_do'
-      %li= link_to 'Resolved', '#tab_done'
-
-  .tab_container
-    - {tab_all: list, tab_to_do: list.to_do, tab_done: list.done}.each_pair do |tab, data|
-      .tab_content{:id => tab}
-        %table.tablesorter{:cellspacing => 0}
-          %tbody= render partial: 'tasks/task', collection: data
+  -if list.any?
+    %header
+      %h3.tabs_involved #{pluralize(list.count, 'task')} in the list
+      %span.new_task= link_to '', new_task_path(:list_id => @list.id), title: 'Add new task', remote: true
+      %ul.tabs
+        %li= link_to "All", '#tab_all'
+        %li= link_to 'To Do', '#tab_to_do'
+        %li= link_to 'Resolved', '#tab_done'
+    #new_task.invisible
+    .tab_container
+      - {tab_all: list, tab_to_do: list.to_do, tab_done: list.done}.each_pair do |tab, data|
+        .tab_content{:id => tab}
+          %table.tablesorter{:cellspacing => 0}
+            %thead
+              %tr
+                %th Name
+                %th Status
+                %th Priority
+                %th Assigned to
+                %th Created on
+                %th Actions
+            %tbody= render partial: 'tasks/task', collection: data
+  -else
+    %header
+      %h4 You don't have any tasks here. Add one
+    .module_content=render partial: 'tasks/form'
 

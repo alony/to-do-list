@@ -14,13 +14,9 @@ html, body {
   font-size: 12px;
 }
 
-.clear {
-  clear: both;
-}
-
-.spacer {
-  height: 20px;
-}
+.clear { clear: both; }
+.invisible { display: none; }
+.spacer { height: 20px; }
 
 a {
   &:link, &:visited {
@@ -172,6 +168,7 @@ aside#sidebar {
   float: left;
   min-height: 500px;
   margin-top: -4px;
+  padding-bottom: 20px;
   hr {
     border: none;
     outline: none;
@@ -276,7 +273,7 @@ section#main {
   background: url(sidebar_shadow.png) repeat-y left top;
   float: left;
   margin-top: -2px;
-  padding: 15px 20px;
+  padding: 10px 20px;
   h3 {
     color: #1F1F20;
     text-transform: uppercase;
@@ -326,6 +323,7 @@ section#main {
       padding-top: 5px;
       height:32px;
     }
+    #new_task { padding: 10px; }
   }
 }
 
@@ -406,16 +404,26 @@ section#main {
     margin: 0;
     border-bottom: 1px dotted #ccc;
     padding: 15px 10px;
+    &.actions span {
+      padding: 15px;
+    }
+    &.actions a {
+      padding: 15px 15px;
+      padding-top: 5px;
+      &.icn_edit { background: url(icn_edit.png) no-repeat; }
+      &.icn_done { background: url(icn_done.png) no-repeat; }
+      &.icn_trash { background: url(icn_trash.png) no-repeat; }
+    }
   }
   input[type=image] { margin-right: 10px; }
 }
 
 ul.tabs {
-	margin: 3px 10px 0 0;
+	margin: 0 10px 0 0;
 	padding: 0;
 	float: right;
 	list-style: none;
-	height: 24px;
+	height: 20px;
 	@include border-radius(#ccc, 5px);
   @include box-shadow(0 1px 0 #fff);
 	font-weight: bold;
@@ -424,18 +432,18 @@ ul.tabs {
 	  float: left;
   	margin: 0;
   	padding: 0;
-	  line-height: 24px;
+	  line-height: 20px;
 	  a {
 	    text-decoration: none;
     	color: #999;
     	display: block;
     	padding: 0 10px;
-    	height: 24px;
+    	height: 20px;
     	&:hover { color: #44474F;	}
 	  }
 	  &.active a { color: #44474F; }
 	  &.active, &.active a:hover {
-	    background: #F1F2F4;
+	    background: #F1F2F4 !important;
 	    @include box-shadow(inset 0 2px 3px #818181);
 	  }
 	  &:first-child, &:first-child a {
@@ -449,10 +457,17 @@ ul.tabs {
 	}
 }
 
-#main .module header h3.tabs_involved {
-  display: block;
-  width: 60%;
-  float: left;
+#main .module header {
+  span.new_task a{
+    background: url('icn_new_article.png') no-repeat center left;
+    padding: 25px 15px 0 15px;
+    float: right;
+  }
+  h3.tabs_involved {
+    display: block;
+    width: 60%;
+    float: left;
+  }
 }
 
 /* Messages */
@@ -552,7 +567,8 @@ fieldset, .tasks_container {
 }
 
 .tasks_container {
-  select, input[type=number] { width: auto; }
+  select { width: 40%; }
+  input[type=number] {width: 35%; }
 }
 
 .submit_link {
@@ -615,25 +631,21 @@ header .submit_link {
   &.alert_info {
     @include flash;
     border-color: #77bace;
-    background: #B5E5EF url(icn_alert_info.png) no-repeat;
+    background: #B5E5EF url(icn_alert_info.png) center 10px no-repeat;
     color: #082B33;
   }
   &.alert_warning {
     @include flash;
     border-color: #C7A20D;
-    background: #F5F3BA url(icn_alert_warning.png) no-repeat;
+    background: #F5F3BA url(icn_alert_warning.png) center 10px no-repeat;
     color: #796616;
   }
   &.alert_error {
     @include flash;
-    border-color: #D20009;
-    background: #F3D9D9 url(icn_alert_error.png) no-repeat;
     color: #7B040F;
   }
   &.alert_success {
     @include flash;
-    border-color: #79C20D;
-    background: #E2F6C5 url(icn_alert_success.png) no-repeat;
     color: #32510F;
   }
 }

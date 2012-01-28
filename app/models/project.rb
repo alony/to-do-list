@@ -6,5 +6,9 @@ class Project < ActiveRecord::Base
   has_many :users, :through => :collaborations
 
   belongs_to :author, :class_name => 'User'
+
+  def collaborators
+    users.all << author
+  end
 end
 

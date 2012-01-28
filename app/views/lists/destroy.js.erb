@@ -1,3 +1,4 @@
 SideList.dropItem('<%= @list_destroy.id %>');
+Page.showContent('<%= escape_javascript([current_user.username, link_to("(#{current_user.tasks_to_do.count} tasks assigned)", assigned_tasks_path)].join(' ').html_safe) %>', 'section#secondary_bar > .user > p');
 Page.showContent('<%= escape_javascript(render(@list.new_record? ? 'form' : 'list')) %>');
 
