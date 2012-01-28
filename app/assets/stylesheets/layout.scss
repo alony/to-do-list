@@ -538,10 +538,10 @@ fieldset {
   background: #F6F6F6;
   padding: 1% 0% 2%;
   margin: 10px 0;
-  label {
+  label, span.hint {
     display: block;
     float: left;
-    width: 200px;
+    width: auto;
     height: 25px;
     line-height: 25px;
     text-shadow: 0 1px 0 #fff;
@@ -550,10 +550,14 @@ fieldset {
     margin: 5px 0;
     text-transform: uppercase;
   }
+  span.hint {
+    text-transform: none;
+    font-style: italic;
+  }
 }
 
 fieldset, .tasks_container {
-  input[type=text], input[type=number], select, textarea {
+  input[type=text], input[type=number], input[type=email], input[type=password], select, textarea {
     @include control;
     &:focus {
       outline: none;
@@ -561,7 +565,7 @@ fieldset, .tasks_container {
       @include box-shadow(inset 0 2px 2px #ccc, 0 0 10px #ADDCE6);
     }
   }
-  input[type=text], input[type=number], select {
+  input[type=text], input[type=number], input[type=email], input[type=password], select {
     height: 20px;
   }
 }

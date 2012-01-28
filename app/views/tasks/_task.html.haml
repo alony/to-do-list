@@ -3,6 +3,7 @@
   %td= task.status
   %td= task.priority
   %td= task.assigned.try(:username)
+  %td= task.author.username
   %td= task.created_at.strftime '%-d %B %Y'
   %td.actions
     -unless task.resolved?
