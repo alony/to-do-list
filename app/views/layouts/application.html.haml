@@ -8,5 +8,8 @@
 
   %body
     = render 'menu'
-    %section#main.column= yield
+    - if user_signed_in?
+      %section#main.column= yield
+    - else
+      .welcome= yield
 

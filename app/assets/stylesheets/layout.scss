@@ -659,13 +659,14 @@ header .submit_link {
     color: #444;
     font-size: 30px;
   }
-  div {
+  .first {
     color: #666;
     font-size: 16px;
-    &.sec {
-      color: #555;
-      margin: auto auto 30px 50%;
-    }
+  }
+  .sec {
+    color: #555;
+    font-size: 16px;
+    margin: auto auto 30px 50%;
   }
   span.links {
     color: #666;
@@ -676,8 +677,12 @@ header .submit_link {
       height: 35px;
       width: 88px;
       background: transparent url(signup.png) center left no-repeat;
-
     }
+  }
+  form div {
+    color: #666;
+    font-size: 16px;
+    margin: 10px;
   }
 }
 

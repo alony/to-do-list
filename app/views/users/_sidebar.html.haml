@@ -1,5 +1,5 @@
 %h3 Task Lists
-- if @task_lists ||= @project.try(:lists)
+- if @task_lists ||= (@project && !@project.new_record? && @project.lists)
   %ul#task_lists.toggle= render partial: 'lists/lists', object: @task_lists
 
 - if @project && !@project.new_record?
