@@ -1,9 +1,4 @@
 Page.showContent('<%= escape_javascript(render 'application/submenu') %>', 'section#secondary_bar');
 Page.showContent('<%= escape_javascript(render 'users/sidebar') %>', 'aside#sidebar.column');
-Page.showContent('<%= escape_javascript(
-  if @project.new_record?
-    render 'form'
-  else
-    render(@project.lists.first ? 'lists/list' : 'lists/form' )
-  end
-  ) %>');
+Page.showContent('<%= escape_javascript(render(@project.lists.first ? 'lists/list' : 'lists/form'))%>');
+

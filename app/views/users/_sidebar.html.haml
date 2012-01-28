@@ -1,8 +1,8 @@
 %h3 Task Lists
-%ul#task_lists.toggle
-  = render partial: 'lists/lists', object: @task_lists
+- if @task_lists
+  %ul#task_lists.toggle= render partial: 'lists/lists', object: @task_lists
 
-- if @project
+- if @project && !@project.new_record?
   %h3 Project #{truncate(@project.name, :length => 20)}
   %ul.toggle
     %li.icn_edit_article= link_to "Edit project", edit_project_path(@project), :remote => true

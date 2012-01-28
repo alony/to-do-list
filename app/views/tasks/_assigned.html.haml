@@ -1,3 +1,9 @@
+- if @projects.empty?
+  %article.module.width_full
+    %header
+      %h3 No tasks assigned to you
+    .module_content= image_tag 'lazy.jpg'
+
 - @projects.each do |project|
   %article.module.width_full
     %header
