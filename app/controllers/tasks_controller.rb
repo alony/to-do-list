@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @tasks = Task.all
   end
@@ -7,12 +9,7 @@ class TasksController < ApplicationController
     @projects = Project.where(:id => current_user.tasks_to_do.map(&:list).map(&:project_id))
   end
 
-  def show
-    @task = Task.find(params[:id])
-  end
-
   def edit
-    @task = Task.find(params[:id])
     render 'new'
   end
 
@@ -33,7 +30,6 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = Task.find(params[:id])
     if @task.update_attributes(params[:task])
       redirect_to @task.list, notice: 'Task was successfully updated.'
     else
@@ -42,7 +38,6 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find(params[:id])
     @task.destroy
     redirect_to @task.list
   end

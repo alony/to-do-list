@@ -1,0 +1,11 @@
+%article.module.width_full
+  %header
+    %h3 Invite a user into your project
+  .module_content
+    = form_for [@project, @collaboration], remote: true do |f|
+      %fieldset
+        %p
+          =f.label :email
+          =f.text_field :email
+      .actions= f.submit 'Invite'
+

@@ -1,15 +1,15 @@
 class ListsController < ApplicationController
+  load_and_authorize_rosource
+
   def index
     @lists = List.all
   end
 
   def show
-    @list = List.find(params[:id])
     @tasks = @list.tasks
   end
 
   def edit
-    @list = List.find(params[:id])
     render 'new'
   end
 
@@ -24,8 +24,6 @@ class ListsController < ApplicationController
   end
 
   def update
-    @list = List.find(params[:id])
-
     if @list.update_attributes(params[:list])
       redirect_to @list, notice: 'List was successfully updated.'
     else

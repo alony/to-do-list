@@ -8,11 +8,15 @@ class User < ActiveRecord::Base
   has_many :collaborations
 
   def projects
-    collaborations.map(&:projects) | Project.where(:author_id => id)
+    collaborations.map(&:project) | Project.where(:author_id => id)
   end
 
   def username
     name || email
+  end
+
+  def generate_pwd!
+    self.password = self.password_confirmation = ActiveSupport::SecureRandom.base64(6)
   end
 end
 

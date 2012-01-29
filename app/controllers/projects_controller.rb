@@ -1,16 +1,16 @@
 class ProjectsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @projects = current_user.projects
   end
 
   def show
-    @project = Project.find(params[:id])
     @task_lists = @project.lists.all
     @list = @task_lists.first
   end
 
   def edit
-    @project = Project.find(params[:id])
     render 'new'
   end
 
@@ -25,7 +25,6 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @project = Project.find(params[:id])
     if @project.update_attributes(params[:project])
       redirect_to @project, notice: 'Project was successfully updated.'
     else
@@ -34,7 +33,6 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id])
     @project.destroy
     redirect_to current_user.projects.first || new_project_path
   end

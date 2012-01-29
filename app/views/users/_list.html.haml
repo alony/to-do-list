@@ -1,21 +1,21 @@
 %article.tasks_container
   -if list.any?
     %header
-      %h3 #{pluralize(list.count, 'users')} working on the project
-      %table.tablesorter{:cellspacing => 0}
-        %thead
-          %tr
-            %th Email
-            %th Name
-            %th Projects
-            %th Tasks assigned
-            %th Actions
-          %tbody
-            - @users.each do |user|
-              %tr
-                %td= user.email
-                %td= user.name
-                %td= pluralize(user.projects.count, 'project')
-                %td= pluralize(user.tasks_to_do.count, 'task')
-                %td= link_to '', destroy_project_collaboration(@project, user.id)
+      %h3 #{pluralize(list.count, 'user')} working on the project
+    %table.tablesorter{:cellspacing => 0}
+      %thead
+        %tr
+          %th{:width => 400} Email
+          %th Name
+          %th Projects
+          %th Tasks assigned
+          %th
+        %tbody
+          - @users.each do |user|
+            %tr
+              %td= user.email
+              %td= user.name
+              %td{:title => user.projects.map(&:name).join(', ')}= pluralize(user.projects.count, 'project')
+              %td= pluralize(user.tasks_to_do.count, 'task')
+              %td.actions= link_to '', project_collaboration_path(@project, user.id), method: :delete, confirm: "Really?", remote: true, class: 'icn_trash' if can? :delete, Collaboration
 
