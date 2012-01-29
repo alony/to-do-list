@@ -14,15 +14,14 @@ var Page = {
     $(".tablesorter").tablesorter();
     Page.defaultTab();
 
-    //On Click Event
     $("ul.tabs li").live("click", function() {
 
-      $(this).parent().find("li").removeClass("active"); //Remove any "active" class
-      $(this).addClass("active"); //Add "active" class to selected tab
-      $(this).parents(".tasks_container").find(".tab_content").hide(); //Hide all tab content
+      $(this).parent().find("li").removeClass("active");
+      $(this).addClass("active");
+      $(this).parents(".tasks_container").find(".tab_content").hide();
 
-      var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
-      $(activeTab).fadeIn(); //Fade in the active ID content
+      var activeTab = $(this).find("a").attr("href");
+      $(activeTab).fadeIn();
       return false;
     });
 
@@ -32,9 +31,9 @@ var Page = {
   defaultTab: function(){
     if ($("ul.tabs li.active").length != 0) return;
     $.each($("article.module"), function(i, el) {
-      $(el).find(".tab_content").hide(); //Hide all content
-      $(el).find("ul.tabs li:first").addClass("active").show(); //Activate first tab
-      $(el).find(".tab_content:first").show(); //Show first tab content
+      $(el).find(".tab_content").hide();
+      $(el).find("ul.tabs li:first").addClass("active").show();
+      $(el).find(".tab_content:first").show();
     });
   },
 
@@ -51,6 +50,10 @@ var SideList = {
         .attr({ id : link.id })
         .addClass("icn_categories")
         .html(link));
+  },
+
+  changeItem: function(link) {
+    $("ul#task_lists li a#"+$(link).attr('id')).replaceWith(link);
   },
 
   dropItem: function(item_id) {

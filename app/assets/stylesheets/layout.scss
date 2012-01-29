@@ -659,12 +659,12 @@ header .submit_link {
   position: absolute;
   top: 30%;
   left: 30%;
+  color: #666;
   h1 {
     color: #444;
     font-size: 30px;
   }
   .first {
-    color: #666;
     font-size: 16px;
   }
   .sec {
@@ -673,7 +673,6 @@ header .submit_link {
     margin: auto auto 30px 50%;
   }
   span.links {
-    color: #666;
     font-size: 16px;
     a.signup {
       display: inline-block;
@@ -683,10 +682,6 @@ header .submit_link {
       background: transparent url(signup.png) center left no-repeat;
     }
   }
-  form div {
-    color: #666;
-    font-size: 16px;
-    margin: 10px;
-  }
+  fieldset { padding-right: 10px; }
 }
 

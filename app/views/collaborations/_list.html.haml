@@ -1,0 +1,11 @@
+%article.module.width_full
+  %header
+    %h3= @project.name
+  .module_content
+    %p created by #{@project.author.username}
+    .users
+      -if @users.any?
+        =render partial: 'users/list', object: @users
+      -else
+        %h4 No users were invited to the project
+

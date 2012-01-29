@@ -1,0 +1,21 @@
+%article.tasks_container
+  -if list.any?
+    %header
+      %h3 #{pluralize(list.count, 'users')} working on the project
+      %table.tablesorter{:cellspacing => 0}
+        %thead
+          %tr
+            %th Email
+            %th Name
+            %th Projects
+            %th Tasks assigned
+            %th Actions
+          %tbody
+            - @users.each do |user|
+              %tr
+                %td= user.email
+                %td= user.name
+                %td= pluralize(user.projects.count, 'project')
+                %td= pluralize(user.tasks_to_do.count, 'task')
+                %td= link_to '', destroy_project_collaboration(@project, user.id)
+
