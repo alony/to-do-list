@@ -9,6 +9,7 @@ class Ability
       project.users.include? user
     end
     [Task, List].each do |klass|
+      can :create, klass unless user.new_record?
       can :manage, klass do |obj|
         user.projects.include? obj.project
       end
