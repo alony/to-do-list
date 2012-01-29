@@ -7,6 +7,7 @@ class Task < ActiveRecord::Base
   belongs_to :list
   belongs_to :author, :class_name => 'User'
   belongs_to :assigned, :class_name => 'User'
+  delegate :project, :to => :list
 
   scope :done, where(:status => 'resolved')
   scope :to_do, where{status != :resolved}
