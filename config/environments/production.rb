@@ -47,6 +47,15 @@ ToDoList::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'baci.lindsaar.net',
+    :user_name            => 'todo.organize',
+    :password             => 'todo-qwe123',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  }
 
   # Enable threaded mode
   # config.threadsafe!
@@ -58,3 +67,4 @@ ToDoList::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 end
+

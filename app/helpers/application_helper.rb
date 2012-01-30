@@ -7,9 +7,8 @@ module ApplicationHelper
   end
 
   def flash_msg
-    msg = [flash.notice, flash.alert].compact * '; '
-    flash.clear
-    msg
+    flash.discard
+    [flash.notice, flash.alert].compact * '; '
   end
 end
 
