@@ -7,7 +7,7 @@ development:
 
 test:
   adapter: mysql
-  database: to-do-test
+  database: to_do_test
   username: root
   encoding: utf8
   pool: 5
