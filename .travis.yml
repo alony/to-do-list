@@ -6,5 +6,5 @@ script: cucumber
 
 before_script:
   - "mysql -e 'create database to_do_test;'"
-  - "rake db:test:prepare"
+  - "rake db:test:load"
 
