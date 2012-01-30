@@ -6,3 +6,4 @@ script: cucumber
 
 before_script:
   - "mysql -e 'create database to-do-test;'"
+
