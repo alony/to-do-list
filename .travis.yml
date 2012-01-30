@@ -5,5 +5,5 @@ rvm:
 script: cucumber
 
 before_script:
-  - "mysql -e 'create database to-do-test;'"
+  - "mysql -e 'create database to_do_test;'"
 
