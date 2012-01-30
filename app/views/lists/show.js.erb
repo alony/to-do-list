@@ -1,4 +1,4 @@
-Page.showContent('<%= escape_javascript([current_user.username, link_to("(#{pluralize(current_user.tasks_to_do.count, 'task')} assigned)", assigned_tasks_path, remote: true)].join(' ').html_safe) %>', 'section#secondary_bar > .user > p');
+Page.showContent('<%= escape_javascript([current_user.username, link_to("(#{pluralize(current_user.tasks_to_do.count, 'task')} assigned)", assigned_tasks_path, remote: true)].join(' ').html_safe) %>', 'section#secondary_bar > .user > p', '<%= flash_msg %>');
 SideList.changeItem('<%= link_to @list.name, @list, remote: true, id: @list.id %>');
 Page.showContent('<%= escape_javascript(render 'list') %>');
 

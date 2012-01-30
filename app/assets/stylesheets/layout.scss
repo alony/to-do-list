@@ -633,12 +633,6 @@ header .submit_link {
 
 /* Alerts */
 #main h4 {
-  &.alert_info {
-    @include flash;
-    border-color: #77bace;
-    background: #B5E5EF url(icn_alert_info.png) center 10px no-repeat;
-    color: #082B33;
-  }
   &.alert_warning {
     @include flash;
     border-color: #C7A20D;
@@ -653,6 +647,17 @@ header .submit_link {
     @include flash;
     color: #32510F;
   }
+}
+#flash {
+  position: absolute;
+  width: 270px;
+  padding: 15px;
+  right: 35px;
+  top: 75px;
+  @include border-radius(#77bace, 5px);
+  opacity: 0.9;
+  background: #B5E5EF;
+  color: #082B33;
 }
 
 /* Welcome page */

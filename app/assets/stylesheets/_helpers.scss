@@ -30,8 +30,8 @@
 
 @mixin flash() {
   display: block;
-  width: 95%;
-  margin: 0 3%;
+  width: 70%;
+  margin: 0 15%;
   @include border-radius(#fff, 5px);
   background-position: 10px 10px;
   padding: 10px 0;

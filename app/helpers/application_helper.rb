@@ -5,5 +5,11 @@ module ApplicationHelper
     end.join("<div class='breadcrumb_divider'></div>")
     [projects, link_to("Add project", new_project_path, :remote => true)].reject(&:blank?).join("<div class='breadcrumb_divider new'></div>").html_safe
   end
+
+  def flash_msg
+    msg = [flash.notice, flash.alert].compact * '; '
+    flash.clear
+    msg
+  end
 end
 

@@ -13,7 +13,7 @@ class CollaborationsController < ApplicationController
     user.generate_pwd! and user.save if user.new_record?
     @project.users << user
     Mailer.invite(user, @project.name, user.password).deliver
-    
+
     redirect_to project_collaborations_path(@project), :notice => "#{user.username} is invited to the project"
   end
 

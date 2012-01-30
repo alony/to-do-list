@@ -26,6 +26,7 @@ var Page = {
     });
 
     $('.column').equalHeight();
+    $("#flash").delay(5000).fadeOut();
   },
 
   defaultTab: function(){
@@ -37,10 +38,16 @@ var Page = {
     });
   },
 
-  showContent: function(content, node) {
+  showContent: function(content, node, flash) {
     if (typeof node == "undefined") node = "section#main";
     $(node).html(content);
     Page.defaultTab();
+    if (typeof flash != "undefined" && flash.length != 0) Page.showFlash(flash);
+  },
+
+  showFlash: function(msg) {
+    if ($("#flash").length == 0) $('body').prepend($("<div id='flash'></div>").addClass('invisible').html(msg));
+    $("#flash").fadeIn().delay(5000).fadeOut();
   }
 }
 

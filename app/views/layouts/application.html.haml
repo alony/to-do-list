@@ -7,6 +7,8 @@
     = csrf_meta_tags
 
   %body
+    -if flash.any?
+      #flash= flash_msg
     = render 'menu'
     - if user_signed_in?
       %section#main.column= yield
