@@ -11,5 +11,16 @@ class Task < ActiveRecord::Base
 
   scope :done, where(:status => 'resolved')
   scope :to_do, where{status != :resolved}
+  
+  after_save :notify
+  
+  private
+  def notify
+    if assigned_id_changed?
+      Mailer.reassign(assigned, self).deliver
+    elsif status_changed?
+      Mailer.status(assigned, author, self).deliver
+    end
+  end
 end
 

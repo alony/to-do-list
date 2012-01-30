@@ -1,6 +1,13 @@
 Hello, <%= @user.username %>
 
-You were invited to the project <%= @project.name %>
+You were invited to the project <%= @project_name %>
+
+<% if @pwd %>
+  Your credentials are:
+  
+  email: <%= @user.email %>
+  password: <%= @pwd %>
+<% end %>
 
 Thanks for joining and have a great day!
 

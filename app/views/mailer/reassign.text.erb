@@ -1,0 +1,11 @@
+Hello, <%= @user.username %>
+
+Task <%= @task.name %> was assigned to you with status "<%= @task.status.capitalize %>".
+Priority: <%= @task.priority || 'Not specified' %>
+
+<%= @task.desc %>
+
+----
+regards,
+your ToDo List
+

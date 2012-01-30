@@ -1,0 +1,11 @@
+Hello, <%= @users.map(&:username).join(', ') %>
+
+Task <%= @task.name %> has changed the status to "<%= @task.status.capitalize %>".
+Priority: <%= @task.priority || 'Not specified' %>
+
+<%= @task.desc %>
+
+----
+regards,
+your ToDo List
+

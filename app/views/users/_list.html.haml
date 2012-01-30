@@ -17,5 +17,7 @@
               %td= user.name
               %td{:title => user.projects.map(&:name).join(', ')}= pluralize(user.projects.count, 'project')
               %td= pluralize(user.tasks_to_do.count, 'task')
-              %td.actions= link_to '', project_collaboration_path(@project, user.id), method: :delete, confirm: "Really?", remote: true, class: 'icn_trash' if can? :delete, Collaboration
+              %td.actions
+                - if can? :manage, @project
+                  = link_to '', project_collaboration_path(@project, user.id), method: :delete, confirm: "Really?", remote: true, class: 'icn_trash' 
 
