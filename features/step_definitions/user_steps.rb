@@ -5,7 +5,6 @@ Given /^no user exists with an email "(.*)"$/ do |email|
 end
 
 Given /^I am an existing user "([^"]*)" with password "([^"]*)"$/ do |email, password|
-  Rails.application.load_seed
   User.create! :email => email,
                :password => password,
                :password_confirmation => password
@@ -26,7 +25,7 @@ When /^I sign in as "(.*)\/(.*)"$/ do |email, password|
   step %{I go to the login page}
   step %{I fill in "user_email" with "#{email}"}
   step %{I fill in "Password" with "#{password}"}
-  step %{I press "Log In"}
+  step %{I press "Sign in"}
 end
 
 When /^I return next time$/ do
@@ -36,7 +35,7 @@ end
 #-------------------------------------- THEN --------------------------------------------------
 
 Then /^I should be already signed in$/ do
-  step %{I should see "Logout"}
+  step %{I should see "Sign Out"}
 end
 
 Then /^I should be signed in$/ do
