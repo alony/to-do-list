@@ -1,10 +1,7 @@
 %h3 #{action_name.capitalize} project
 
 = form_for @project||=Project.new, :remote => true do |f|
-  -if @project.errors.any?
-    %h4.alert_error
-      - @project.errors.full_messages.each do |msg|
-        %li= msg
+  =errors(@project)
   %fieldset
     %p
       =f.label :name

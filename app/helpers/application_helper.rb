@@ -10,5 +10,9 @@ module ApplicationHelper
     flash.discard
     [flash.notice, flash.alert].compact * '; '
   end
+  
+  def errors(resource)
+    ("<div id='flash'>" << resource.errors.try(:full_messages) * '; ' << '</div>').html_safe if resource.errors.any?
+  end
 end
 

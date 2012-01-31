@@ -12,12 +12,10 @@ module NavigationHelpers
       '/'
     when /the login page/
       '/users/sign_in'
-=begin    when /a journal entry page/
-      # Hard-coded to a specific date to make testing easier
-      journal_entry_path('2010-10-10')
-    when /my list of nicks for "(\d{4}-\d{2}-\d{2})"/
-      formatted_nick_path($1, :json)
-=end
+    when /the logout page/
+      '/users/sign_out'
+    when /the signup page/
+      '/users/sign_up'
       # Add more mappings here.
       # Here is an example that pulls values out of the Regexp:
       #

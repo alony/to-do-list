@@ -13,6 +13,6 @@ Scenario: Successfull login with correct credentials
 Scenario: Unregistered user cannot login
   Given no user exists with an email "cheater@todolist.com"
   And I am not logged in
-  When I sign in as "cheater@prozoob.com/invalid"
+  When I sign in as "cheater@todolist.com/invalid"
   Then I should not be signed in
 

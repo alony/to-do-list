@@ -1,9 +1,6 @@
 = form_for @task||=Task.new(priority: 1, status: :new, assigned_id: current_user.id, list_id: @list.id), remote: true do |f|
   =f.hidden_field :list_id
-  -if @task.errors.any?
-    %h4.alert_error
-      - @task.errors.full_messages.each do |msg|
-        %li= msg
+  =errors(@task)
   %table
     %tr
       %th=f.label :name

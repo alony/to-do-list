@@ -1,10 +1,7 @@
 = form_for @list ||= @project.lists.build, :remote => true do |f|
 
   %h3 #{@list.new_record? ? 'New' : 'Edit'} task list
-  -if @list.errors.any?
-    %h4.alert_error
-      - @list.errors.full_messages.each do |msg|
-        %li= msg
+  = errors(@list)
   %fieldset
     .set
       =f.label :name
