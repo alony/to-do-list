@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   end
 
   def username
-    name || email
+    name.blank? ? email : name
   end
 
   def generate_pwd!

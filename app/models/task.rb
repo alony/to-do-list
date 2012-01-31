@@ -21,6 +21,8 @@ class Task < ActiveRecord::Base
     elsif status_changed?
       Mailer.status(assigned, author, self).deliver
     end
+  rescue
+    true # go ahead even if email was not sent
   end
 end
 
