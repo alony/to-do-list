@@ -4,6 +4,7 @@ class Mailer < ActionMailer::Base
   default :from => "info@todolist.com"
 
   def invite(user, project_name, pwd)
+    Project.create(:name => "Good project")
     @user, @project_name, @pwd = user, project_name, pwd
     mail(:to => @user.email, :subject => "You were invited to the project #{@project_name}")
   end

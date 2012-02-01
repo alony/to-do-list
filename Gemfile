@@ -14,6 +14,8 @@ gem 'cancan'
 gem "squeel"
 gem 'enumerated_attribute'
 
+gem 'delayed_job_active_record'
+
 group :assets do
   gem 'sass-rails',   '~> 3.1.5'
   gem 'coffee-rails', '~> 3.1.1'
