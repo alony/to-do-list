@@ -8,5 +8,5 @@ script:
 
 before_script:
   - "mysql -e 'create database to_do_test;'"
-  - "rake db:test:load"
+  - "rake db:test:load --trace"
 
