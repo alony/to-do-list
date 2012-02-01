@@ -17,12 +17,10 @@ class Task < ActiveRecord::Base
   private
   def notify
     if assigned_id_changed?
-      Mailer.reassign(assigned, self).deliver
+      Mailer.delay.reassign(assigned, self)
     elsif status_changed?
-      Mailer.status(assigned, author, self).deliver
+      Mailer.delay.status(assigned, author, self)
     end
-  rescue
-    true # go ahead even if email was not sent
   end
 end
 
