@@ -26,7 +26,7 @@ group :test do
   gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'rack-test'
-  gem 'rspec'
+  gem 'rspec-rails'
   gem 'simplecov'
 end
 

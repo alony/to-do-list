@@ -2,7 +2,9 @@ rvm:
   - 1.9.2
   - 1.9.3
   
-script: cucumber
+script: 
+  - "cucumber"
+  - "rspec"
 
 before_script:
   - "mysql -e 'create database to_do_test;'"

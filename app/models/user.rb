@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   end
 
   def generate_pwd!
-    self.password = self.password_confirmation = ActiveSupport::SecureRandom.base64(6)
+    self.password = self.password_confirmation = SecureRandom.base64(6)
   end
 end
 
