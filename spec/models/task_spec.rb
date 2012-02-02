@@ -23,7 +23,9 @@ describe Task do
 
   it "should be saved with valid data" do
     lambda { 
-      Task.create valid_attributes
+      @task = Task.new valid_attributes
+      @task.stub!(:notify).and_return(true)
+      @task.save
     }.should change{ Task.count }.by 1
   end
   
