@@ -1,6 +1,6 @@
 class CollaborationsController < ApplicationController
   before_filter :get_project
-
+  
   def new
     @collaboration = @project.collaborations.build
   end

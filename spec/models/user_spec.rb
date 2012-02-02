@@ -1,6 +1,10 @@
 require "spec_helper"
 
 describe User do
+  it { should have_many(:lists) }
+  it { should have_many(:tasks_to_do) }
+  it { should have_many(:collaborations) }
+
   it "should require password" do
     @user = User.new valid_attributes
     @user.password = nil

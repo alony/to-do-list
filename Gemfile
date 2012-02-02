@@ -30,5 +30,6 @@ group :test do
   gem 'rack-test'
   gem 'rspec-rails'
   gem 'simplecov'
+  gem 'shoulda-matchers'
 end
 

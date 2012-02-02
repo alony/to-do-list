@@ -46,8 +46,8 @@ var Page = {
   },
 
   showFlash: function(msg) {
-    if ($("#flash").length == 0) $('body').prepend($("<div id='flash'></div>").addClass('invisible').html(msg));
-    $("#flash").fadeIn().delay(5000).fadeOut();
+    if ($("#flash").length == 0) $('body').prepend($("<div id='flash'></div>").addClass('invisible'));
+    $("#flash").html(msg).fadeIn().delay(5000).fadeOut();
   }
 }
 
