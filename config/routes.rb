@@ -1,8 +1,5 @@
 ToDoList::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => :registrations }
-  devise_scope :user do
-    get "/users/sign_out", :to => "devise/sessions#destroy"
-  end
 
   resources :lists
   resources :tasks

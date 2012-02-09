@@ -49,7 +49,8 @@ When /^I return next time$/ do
 end
 
 When /^I sign out$/ do
-  delete '/users/sign_out'
+  res = Capybara.current_session.driver.delete '/users/sign_out'
+  Capybara.current_session.driver.follow 'get', res["Location"] if res.redirect?
 end
 
 #-------------------------------------- THEN --------------------------------------------------
