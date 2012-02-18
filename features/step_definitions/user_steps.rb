@@ -4,16 +4,14 @@ Given /^no user exists with an email "(.*)"$/ do |email|
   User.find(:first, :conditions => { :email => email }).should be_nil
 end
 
-Given /^I am an existing user "([^"]*)" with password "([^"]*)"$/ do |email, password|
-  User.create! :email => email,
-               :password => password,
-               :password_confirmation => password
+Given /^I am an existing user$/ do
+  User.create! user
 end
 
-Given /^I am logged in as "(.*)\/(.*)"$/ do |email, pwd|
+Given /^I am logged in$/ do
   step %{I go to the login page}
-  step %{I fill in "user_email" with "#{email}"}
-  step %{I fill in "Password" with "#{pwd}"}
+  step %{I fill in "user_email" with "#{user[:email]}"}
+  step %{I fill in "Password" with "#{user[:password]}"}
   step %{I press "Sign in"}
 end
 
@@ -27,11 +25,11 @@ end
 
 #-------------------------------------- WHEN --------------------------------------------------
 
-When /^I sign in as "(.*)\/(.*)"$/ do |email, password|
+When /^I sign in$/ do
   step %{I am not logged in}
   step %{I go to the login page}
-  step %{I fill in "user_email" with "#{email}"}
-  step %{I fill in "Password" with "#{password}"}
+  step %{I fill in "user_email" with "#{user[:email]}"}
+  step %{I fill in "Password" with "#{user[:password]}"}
   step %{I press "Sign in"}
 end
 
@@ -53,6 +51,15 @@ When /^I sign out$/ do
   Capybara.current_session.driver.follow 'get', res["Location"] if res.redirect?
 end
 
+When /^I change my user data as "(.*)\/(.*)\/(.*)\/(.*)"$/ do |email, name, password, confirmation|
+  step %{I go to the home page}
+  step %{I follow "Your Profile"}
+  step %{I fill in "user_email" with "#{email}"}
+  step %{I fill in "user_name" with "#{name}"}
+  step %{I fill in "user_password" with "#{password}"}
+  step %{I fill in "user_password_confirmation" with "#{confirmation}"}
+  step %{I press "Update"}
+end
 #-------------------------------------- THEN --------------------------------------------------
 
 Then /^I should be already signed in$/ do
@@ -78,5 +85,11 @@ end
 Then /^I should be signed out$/ do
   step %{I should see "Sign In"}
   step %{I should not see "Sign Out"}
+end
+
+# helpers -------------------------------------------------------------------------------------
+
+def user
+  { :email => "test_user@todolist.com", :password => "please", :password_confirmation => "please" }
 end
 
