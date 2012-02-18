@@ -5,7 +5,7 @@ development:
   timeout: 5000
   host: 127.0.0.1
 
-test:
+test: &test
   adapter: mysql
   database: to_do_test
   username: root
@@ -21,3 +21,6 @@ production:
   timeout: 5000
   host: 127.0.0.1
   
+
+cucumber:
+  <<: *test

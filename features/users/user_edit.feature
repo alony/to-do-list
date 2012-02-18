@@ -10,5 +10,5 @@ Scenario: User can edit his profile entering valid data
   Given I am an existing user
   And I am logged in
   When I change my user data as "new_email@gmail.com/New name/new_password/new_password"
-  Then My data should change to "new_email@gmail.com", "New name", "new_password"
+  Then User data should be "new_email@gmail.com/New name/new_password"
 

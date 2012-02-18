@@ -87,6 +87,12 @@ Then /^I should be signed out$/ do
   step %{I should not see "Sign Out"}
 end
 
+Then /^User data should be "(.*)\/(.*)\/(.*)"$/ do |email, name, password|
+  user = User.find_by_email_and_name(email, name)
+  user.should_not be_nil
+  user.valid_password?(password).should be_true
+end
+
 # helpers -------------------------------------------------------------------------------------
 
 def user
