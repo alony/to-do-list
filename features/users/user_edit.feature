@@ -13,14 +13,14 @@ Scenario: Unauthorised user cannot update profile
 Scenario: User can edit his profile entering valid data
   Given I am an existing user
   And I am logged in
-  When I change my user data as "new_email@gmail.com/New name/new_password/new_password"
-  Then User data should be "new_email@gmail.com/New name/new_password"
+  When I change my user data as "new_email@gmail.com/New_name/new_password/new_password"
+  Then User data should be "new_email@gmail.com/New_name/new_password"
 
 @selenium @javascript
 Scenario: User cannot update profile with invalid data
   Given I am an existing user
   And I am logged in
-  When I change my user data as "/New name/new_password/new_wrong_password"
+  When I change my user data as "/New_name/new_password/new_wrong_password"
   Then User data should not change
   And I should see "Email can't be blank"
   And I should see "Password doesn't match confirmation"
