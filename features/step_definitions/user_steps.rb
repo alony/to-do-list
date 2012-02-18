@@ -93,9 +93,13 @@ Then /^User data should be "(.*)\/(.*)\/(.*)"$/ do |email, name, password|
   user.valid_password?(password).should be_true
 end
 
+Then /^User data should not change$/ do
+  step %{User data should be "#{user[:email]}/#{user[:name]}/#{user[:password]}"}
+end
+
 # helpers -------------------------------------------------------------------------------------
 
 def user
-  { :email => "test_user@todolist.com", :password => "please", :password_confirmation => "please" }
+  { :email => "test_user@todolist.com", :name => "miau", :password => "please", :password_confirmation => "please" }
 end
 
