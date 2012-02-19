@@ -18,12 +18,9 @@ module NavigationHelpers
       '/users/edit'
     when /the new project page/
       '/projects/new'
-
-      # Add more mappings here.
-      # Here is an example that pulls values out of the Regexp:
-      #
-      #   when /^(.*)'s profile page$/i
-      #     user_profile_path(User.find_by_login($1))
+    when /the edit "(.*)" project page/
+    puts "#{$1}"
+      "/projects/#{Project.find_by_name("#{$1}").id}/edit"
 
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +

@@ -10,22 +10,19 @@ Scenario: Unauthorised user cannot create projects
   And I should be on the login page
 
 Scenario: User having no projects will see new project form on the home page_name
-  Given I am an existing user
-  And I am logged in
+  Given I am logged in
   When I go to the home page
-  Then I should see a project form
+  Then I should see a new project form
 
 @selenium @javascript
 Scenario: Authorized user can create project specifying the name
-  Given I am an existing user
-  And I am logged in
+  Given I am logged in
   When I create new project "Test"
   Then A project "Test" should exist
 
 @selenium @javascript
 Scenario: Project without name cannot be created
-  Given I am an existing user
-  And I am logged in
+  Given I am logged in
   When I create new project ""
   Then I should be on the new project page
   And I should see "Name can't be blank"

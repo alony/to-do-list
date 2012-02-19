@@ -1,4 +1,4 @@
-%h3 #{action_name.capitalize} project
+%h3 #{action_name.eql?("new") ? "New" : "Edit"} project
 
 = form_for @project||=Project.new, :remote => true do |f|
   =errors(@project)

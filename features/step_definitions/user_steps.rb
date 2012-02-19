@@ -9,6 +9,7 @@ Given /^I am an existing user$/ do
 end
 
 Given /^I am logged in$/ do
+  step %{I am an existing user}
   step %{I go to the login page}
   step %{I fill in "user_email" with "#{user[:email]}"}
   step %{I fill in "Password" with "#{user[:password]}"}
@@ -100,6 +101,6 @@ end
 # Helpers
 
 def user
-  { :email => "test_user@todolist.com", :name => "miau", :password => "please", :password_confirmation => "please" }
+  { :email => "test_user@todolist.com", :name => "John", :password => "please", :password_confirmation => "please" }
 end
 
