@@ -16,9 +16,6 @@ module NavigationHelpers
       '/users/sign_up'
     when /the edit profile page/
       '/users/edit'
-    when /the new project page/
-      '/projects/new'
-
       # Add more mappings here.
       # Here is an example that pulls values out of the Regexp:
       #
