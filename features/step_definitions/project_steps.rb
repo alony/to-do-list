@@ -41,14 +41,15 @@ end
 Then /^I should see a (\S*) project form$/ do |action|
   step %{I should see "#{action.capitalize} project"}
   step %{I should see "Name"}
+  step %{I should not see "Description"}
   find_button("Save").should_not be_nil
 end
 
-Then /^A project "(.*)" should exist$/ do |name|
-  Project.find_by_name(name).should_not be_nil
+Then /^A (\S*) "(.*)" should exist$/ do |klass, name|
+  klass.capitalize.constantize.send(:find_by_name, name).should_not be_nil
 end
 
-Then /^A project "(.*)" should not exist$/ do |name|
-  Project.find_by_name(name).should be_nil
+Then /^A (\S*) "(.*)" should not exist$/ do |klass, name|
+  klass.capitalize.constantize.send(:find_by_name, name).should be_nil
 end
 

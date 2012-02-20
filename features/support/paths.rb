@@ -19,9 +19,10 @@ module NavigationHelpers
     when /the new project page/
       '/projects/new'
     when /the edit "(.*)" project page/
-    puts "#{$1}"
       "/projects/#{Project.find_by_name("#{$1}").id}/edit"
-
+    when /the new list page/
+      '/lists/new'
+    
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
         "Now, go and add a mapping in #{__FILE__}"

@@ -16,3 +16,6 @@
 /log
 /doc
 /tmp
+
+# Ignore backup files 
+*~
