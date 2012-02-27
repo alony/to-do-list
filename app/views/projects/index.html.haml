@@ -1,0 +1,9 @@
+<div id="wishes"></div>
+
+<%- content_for :javascript do %>
+  new ToDoList.Routers.ProjectsRouter({projects: <%= @projects.to_json.html_safe %>})
+  new ToDoList.Routers.TasksRouter({projects: <%= Task.all.to_json.html_safe %>})
+  
+  Backbone.history.start()
+<%- end %>
+

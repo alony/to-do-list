@@ -12,8 +12,7 @@ class ApplicationController < ActionController::Base
   def welcome
     render and return unless user_signed_in?
     flash.keep
-    project = current_user.projects.first
-    redirect_to project || new_project_path
+    redirect_to projects_path
   end
 end
 
