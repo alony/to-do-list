@@ -14,6 +14,8 @@ gem 'cancan'
 gem "squeel"
 gem 'enumerated_attribute'
 
+gem 'rails-backbone'
+
 gem 'delayed_job_active_record'
 
 group :assets do

@@ -6,8 +6,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require underscore
+//= require backbone
+//= require backbone_rails_sync
+//= require backbone_datalink
+//= require backbone/to_do_list
 //= require_tree .
 //= require_self
+
+
 
 var Page = {
   init: function() {
