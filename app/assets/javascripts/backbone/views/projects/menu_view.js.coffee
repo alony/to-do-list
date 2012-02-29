@@ -1,7 +1,7 @@
 ToDoList.Views.Projects ||= {}
 
-class ToDoList.Views.Projects.IndexView extends Backbone.View
-  template: JST["backbone/templates/projects/index"]
+class ToDoList.Views.Projects.MenuView extends Backbone.View
+  template: JST["backbone/templates/projects/menu"]
 
   initialize: () ->
     @options.projects.bind('reset', @render)
