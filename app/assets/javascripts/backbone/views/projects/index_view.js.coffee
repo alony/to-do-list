@@ -1,20 +1,12 @@
-WishesRails.Views.Wishes ||= {}
+ToDoList.Views.Projects ||= {}
 
-class WishesRails.Views.Wishes.IndexView extends Backbone.View
-  template: JST["backbone/templates/wishes/index"]
+class ToDoList.Views.Projects.IndexView extends Backbone.View
+  template: JST["backbone/templates/projects/index"]
 
   initialize: () ->
-    @options.wishes.bind('reset', @addAll)
-
-  addAll: () =>
-    @options.wishes.each(@addOne)
-
-  addOne: (wish) =>
-    view = new WishesRails.Views.Wishes.WishView({model : wish})
-    @$("tbody").append(view.render().el)
+    @options.projects.bind('reset', @render)
 
   render: =>
-    $(@el).html(@template(wishes: @options.wishes.toJSON() ))
-    @addAll()
+    $(@el).html(@template(projects: @options.projects ))
 
     return this

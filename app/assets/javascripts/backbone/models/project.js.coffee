@@ -1,7 +1,7 @@
 class ToDoList.Models.Project extends Backbone.Model
   paramRoot: 'project'
 
-  defaults: {title: ''}
+  defaults: {name: ''}
 
 class ToDoList.Collections.ProjectsCollection extends Backbone.Collection
   model: ToDoList.Models.Project

@@ -1,14 +1,6 @@
-<h1>Listing wishes</h1>
+<article class="breadcrumbs">
+  <%= projects.map(function(p) {return '<a href="#/'+ p.id +'">'+ p.get('name') +'</a>' }).join("<div class='breadcrumb_divider'></div>") %>
+  <div class='breadcrumb_divider new'></div>
+  <a href="#/new">Add Project</a>
+</article>
 
-<table id="wishes-table">
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-</table>
-
-<br/>
-
-<a href="#/new">New Wish</a>

@@ -1,10 +1,10 @@
-WishesRails.Views.Wishes ||= {}
+ToDoList.Views.Projects ||= {}
 
-class WishesRails.Views.Wishes.NewView extends Backbone.View
-  template: JST["backbone/templates/wishes/new"]
+class ToDoList.Views.Projects.NewView extends Backbone.View
+  template: JST["backbone/templates/projects/form"]
 
   events:
-    "submit #new-wish": "save"
+    "submit #new-project": "save"
 
   constructor: (options) ->
     super(options)
@@ -15,22 +15,23 @@ class WishesRails.Views.Wishes.NewView extends Backbone.View
     )
 
   save: (e) ->
+    alert('save')
     e.preventDefault()
     e.stopPropagation()
 
     @model.unset("errors")
 
     @collection.create(@model.toJSON(),
-      success: (wish) =>
-        @model = wish
+      success: (project) =>
+        @model = project
         window.location.hash = "/#{@model.id}"
 
-      error: (wish, jqXHR) =>
+      error: (project, jqXHR) =>
         @model.set({errors: $.parseJSON(jqXHR.responseText)})
     )
 
   render: ->
-    $(@el).html(@template(@model.toJSON() ))
+    $(@el).html(@template($.extend(@model.toJSON(), {action_name: "new"}) ))
 
     this.$("form").backboneLink(@model)
 

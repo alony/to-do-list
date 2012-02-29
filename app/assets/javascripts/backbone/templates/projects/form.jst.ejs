@@ -1,0 +1,14 @@
+<h3><%= action_name.charAt(0).toUpperCase() + action_name.slice(1) %> project</h3>
+
+<form id="<%= action_name %>-project" name="project">
+  <fieldset>
+    <p>
+      <label for="project_name">Name</label>
+      <input name="name" size="30" type="text" value="<%= name %>" />
+    </p>
+  </fieldset>
+  <div class="actions">
+    <input type="submit" value="Save">
+  </div>
+</form>
+
