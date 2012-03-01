@@ -3,7 +3,7 @@ ToDoList.Views.Projects ||= {}
 class ToDoList.Views.Projects.MenuView extends Backbone.View
   template: JST["backbone/templates/projects/menu"]
 
-  initialize: () ->
+  initialize: ->
     @options.projects.bind('reset', @render)
 
   render: =>

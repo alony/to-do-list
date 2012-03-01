@@ -14,7 +14,9 @@
 //= require_tree .
 //= require_self
 
-
+String.prototype.truncate = function(n){
+                          return this.substr(0,n-1)+(this.length>n?'...':'');
+                         };
 
 var Page = {
   init: function() {
@@ -75,5 +77,5 @@ var SideList = {
   }
 }
 
-$(document).ready(Page.init);
+
 

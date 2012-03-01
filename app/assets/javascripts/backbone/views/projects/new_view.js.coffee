@@ -15,7 +15,6 @@ class ToDoList.Views.Projects.NewView extends Backbone.View
     )
 
   save: (e) ->
-    alert('save')
     e.preventDefault()
     e.stopPropagation()
 
@@ -23,8 +22,8 @@ class ToDoList.Views.Projects.NewView extends Backbone.View
 
     @collection.create(@model.toJSON(),
       success: (project) =>
-        @model = project
-        window.location.hash = "/#{@model.id}"
+        $(".breadcrumb_divider.new").before(ToDoList.Models.Project.menu_divider).before(project.menu_item())
+        window.location.hash = "/#{project.id}"
 
       error: (project, jqXHR) =>
         @model.set({errors: $.parseJSON(jqXHR.responseText)})
@@ -33,6 +32,7 @@ class ToDoList.Views.Projects.NewView extends Backbone.View
   render: ->
     $(@el).html(@template($.extend(@model.toJSON(), {action_name: "new"}) ))
 
+    $(".breadcrumbs_container a").removeClass("current")
     this.$("form").backboneLink(@model)
 
     return this

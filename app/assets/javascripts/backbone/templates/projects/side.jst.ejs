@@ -1,0 +1,21 @@
+<h3>Task Lists</h3>
+<ul id="task_lists" class="toggle">
+  lists here
+  <li class="icn_new_article"><a href="#/<%= project.id %>/lists/new">Add task list</a></li>
+</ul>
+
+<h3>Users</h3>
+<ul class="toggle">
+  <li class="icn_add_user"><a href="#/<%= project.id %>/add_user">Add new user</a></li>
+  <li class="icn_view_users"><a href="#/<%= project.id %>/users">View users</a></li>
+  <li class="icn_profile"><a href="#/users/edit">Your Profile</a></li>
+  <% if(owner) {%>
+    <h3> Project <%= project.get('name').truncate(20) %> </h3>
+    <ul class="toggle">
+      <li class="icn_edit_article"><a href="#/<%= project.id %>/edit">Edit project</a></li>
+      <li class="icn_trash"><a href="#/<%= project.id %>/delete">Drop project</a></li>
+    </ul>
+  <% } %>
+</ul>
+<footer><hr></footer>
+

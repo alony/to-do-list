@@ -1,5 +1,5 @@
 <article class="breadcrumbs">
-  <%= projects.map(function(p) {return '<a href="#/'+ p.id +'">'+ p.get('name') +'</a>' }).join("<div class='breadcrumb_divider'></div>") %>
+  <%= projects.map(function(p) {return p.menu_item() }).join(ToDoList.Models.Project.menu_divider) %>
   <div class='breadcrumb_divider new'></div>
   <a href="#/new">Add Project</a>
 </article>

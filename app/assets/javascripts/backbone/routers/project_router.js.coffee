@@ -19,11 +19,19 @@ class ToDoList.Routers.ProjectsRouter extends Backbone.Router
     $(".breadcrumbs_container").html(@view.render().el)
 
   show: (id) ->
-    project = @projects.get(id)
-
+    $(".breadcrumbs_container a").removeClass("current").filter("##{id}").addClass("current")
+    @view = new ToDoList.Views.Projects.SideView(model: @projects.get(id))
+    $("aside#sidebar").html(@view.render().el)
 
   edit: (id) ->
     project = @projects.get(id)
 
     @view = new ToDoList.Views.Projects.EditView(model: project)
     $("#main").html(@view.render().el)
+    
+  index: ->
+    @menu()
+    if @projects.length == 0 
+      @newProject()
+    else
+      @show(@projects.at(0).id)
