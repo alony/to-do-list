@@ -1,15 +1,17 @@
 class ProjectsController < ApplicationController
   load_and_authorize_resource
-  respond_to :json
+  respond_to :json, :html
   
   def index
     @projects = current_user.projects
+    @lists = @projects.first.try(:lists) || []
+    respond_with @projects, @lists
   end
 
   def show
     @task_lists = @project.lists.all
     @list = @task_lists.first
-    render json: @project
+    respond_with @project
   end
 
   def create
@@ -18,7 +20,7 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to @project, notice: 'Project was successfully created.'
     else
-      render json: @project.errors, status: :unprocessable_entity
+      respond_with @project.errors, status: :unprocessable_entity
     end
   end
 

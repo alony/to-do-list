@@ -4,7 +4,7 @@ class ToDoList.Models.Project extends Backbone.Model
   defaults: {name: ''}
   
   menu_item: =>
-    "<a href='#/#{@id}' id='#{@id}'>#{@get('name')}</a>"
+    "<a href='#/#{@id}'>#{@get('name')}</a>"
   
   @menu_divider: "<div class='breadcrumb_divider'></div>"
     

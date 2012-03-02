@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @lists = List.all
+    @lists = params[:project_id].blank? ? List.all : List.where(:project_id => params[:project_id])
   end
 
   def show
