@@ -1,6 +1,6 @@
 - content_for :javascripts do
-  new ToDoList.Routers.ListsRouter({lists: #{ @lists.to_json.html_safe }})
-  new ToDoList.Routers.ProjectsRouter({projects: #{ @projects.to_json.html_safe }})
+  //new ToDoList.Routers.ListsRouter({lists: #{ @lists.to_json.html_safe }})
+  new ToDoList.Routers.ProjectsRouter({projects: #{ @projects.to_json(include: :lists).html_safe }})
   
   Backbone.history.start()
 

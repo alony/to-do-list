@@ -3,10 +3,12 @@ ToDoList.Views.Lists ||= {}
 class ToDoList.Views.Lists.MenuView extends Backbone.View
   template: JST["backbone/templates/lists/menu"]
 
-  initialize: ->
-    @options.lists.bind('reset', @render)
+  addOne: (list) =>
+    @template(list: list)
 
   render: =>
-    $(@el).html(@template(lists: @options.lists ))
+    $(@el).html(_.map(@options.lists, @addOne))
 
     return this
+    
+    

@@ -30,7 +30,6 @@ class ToDoList.Routers.ProjectsRouter extends Backbone.Router
     $("#main").html(@view.render().el)
     
   index: ->
-    @menu()
     if @projects.length == 0 
       @newProject()
     else
