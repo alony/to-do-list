@@ -4,8 +4,7 @@ class ProjectsController < ApplicationController
   
   def index
     @projects = current_user.projects
-    @lists = @projects.first.try(:lists) || []
-    respond_with @projects, @lists
+    respond_with @projects
   end
 
   def show

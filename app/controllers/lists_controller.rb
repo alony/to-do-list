@@ -1,12 +1,15 @@
 class ListsController < ApplicationController
   load_and_authorize_resource
-  
+  respond_to :html, :json
+    
   def index
     @lists = params[:project_id].blank? ? List.all : List.where(:project_id => params[:project_id])
+    respond_with @lists
   end
 
   def show
     @tasks = @list.tasks
+    respond_with @list
   end
 
   def edit

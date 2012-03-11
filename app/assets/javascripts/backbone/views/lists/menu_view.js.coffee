@@ -7,7 +7,7 @@ class ToDoList.Views.Lists.MenuView extends Backbone.View
     @template(list: list)
 
   render: =>
-    $(@el).html(_.map(@options.lists, @addOne))
+    $(@el).html(_.map(@options.lists, @addOne).join())
 
     return this
     

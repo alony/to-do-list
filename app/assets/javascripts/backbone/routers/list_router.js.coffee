@@ -13,10 +13,6 @@ class ToDoList.Routers.ListsRouter extends Backbone.Router
     @view = new ToDoList.Views.Lists.NewView(collection: @lists)
     $("#main").html(@view.render().el)
 
-  menu: ->
-    @view = new ToDoList.Views.Lists.ListView(lists: @lists)
-    $(".breadcrumbs_container").html(@view.render().el)
-
   show: (id) ->
     @view = new ToDoList.Views.Lists.ShowView(model: @lists.get(id))
     $("main").html(@view.render().el)
@@ -27,9 +23,9 @@ class ToDoList.Routers.ListsRouter extends Backbone.Router
     @view = new ToDoList.Views.Lists.EditView(model: list)
     $("#main").html(@view.render().el)
     
-  index: ->
-    @menu()
-    if @lists.length == 0 
+  index: (project_id) ->
+    @lists.fetch({project_id: project_id})
+    if(@lists.length == 0)
       @newList()
     else
       @show(@lists.at(0).id)

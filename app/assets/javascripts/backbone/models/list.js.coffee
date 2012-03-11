@@ -6,6 +6,6 @@ class ToDoList.Models.List extends Backbone.Model
 class ToDoList.Collections.ListsCollection extends Backbone.Collection
   model: ToDoList.Models.List
   
-  url: (options) ->
-    "/lists?project_id=#{options.project_id}"
+  url: ->
+    "/lists"
 
