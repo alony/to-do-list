@@ -25,7 +25,9 @@ class ToDoList.Routers.ListsRouter extends Backbone.Router
     
   index: (project_id) ->
     @lists.fetch({project_id: project_id})
+    alert(@lists.length)
     if(@lists.length == 0)
+      alert(@lists.length)
       @newList()
     else
       @show(@lists.at(0).id)

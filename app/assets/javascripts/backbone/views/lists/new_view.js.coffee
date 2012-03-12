@@ -1,10 +1,10 @@
-ToDoList.Views.Projects ||= {}
+ToDoList.Views.Lists ||= {}
 
-class ToDoList.Views.Projects.NewView extends Backbone.View
-  template: JST["backbone/templates/projects/form"]
+class ToDoList.Views.Lists.NewView extends Backbone.View
+  template: JST["backbone/templates/lists/form"]
 
   events:
-    "submit #new-project": "save"
+    "submit #new-list": "save"
 
   constructor: (options) ->
     super(options)
@@ -21,17 +21,15 @@ class ToDoList.Views.Projects.NewView extends Backbone.View
     @model.unset("errors")
 
     @collection.create(@model.toJSON(),
-      success: (project) =>
-        window.location.hash = "/#{project.id}"
+      success: (list) =>
+        window.location.hash = "/#{list.id}"
 
-      error: (project, jqXHR) =>
+      error: (list, jqXHR) =>
         @model.set({errors: $.parseJSON(jqXHR.responseText)})
     )
 
   render: ->
     $(@el).html(@template($.extend(@model.toJSON(), {action_name: "new"}) ))
-
-    $(".breadcrumbs_container a").removeClass("current")
     this.$("form").backboneLink(@model)
 
     return this

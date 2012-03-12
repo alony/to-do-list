@@ -23,6 +23,7 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(params[:list])
+    @list.user = current_user
     render action: "new" unless @list.save
   end
 
